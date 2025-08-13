@@ -1,103 +1,150 @@
 import Image from "next/image";
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-[family-name:var(--font-geist-mono)] font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  // WhatsApp number and default message
+  const whatsappNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "";
+  const defaultMessage =
+    process.env.NEXT_PUBLIC_DEFAULT_MESSAGE ||
+    "Hello, I'd like to get my ID now.";
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+    defaultMessage
+  )}`;
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
+  return (
+    <main className="flex min-h-screen flex-col items-center justify-between bg-black text-white">
+      {/* Logo Section */}
+      <div className="w-full max-w-5xl flex flex-col items-center justify-center pt-12 px-4">
+        <div className="relative mx-auto mb-6">
+          <Image
+            src="/logo.png"
+            alt="Yatribook.com Logo"
+            className="object-contain"
+            width={200}
+            height={200}
+            quality={100}
+            priority
+          />
+        </div>
+
+        {/* WhatsApp CTA */}
+        <div className="flex flex-col items-center justify-center mt-4 mb-8">
+          <h2 className="text-xl md:text-2xl font-bold text-[#f0c14b] mb-2 text-center">
+            GET YOUR ID NOW ON WHATSAPP<span className="ml-1">👇</span>
+          </h2>
+          <p className="text-[#f0c14b] text-3xl mb-6 animate-bounce">👇👇</p>
+
           <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
+            className="flex items-center hover:scale-105 duration-200 ease-in gap-x-2  justify-center bg-[#25D366] text-white px-8 py-3 rounded-full hover:bg-opacity-90 transition-all"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
+            <svg
+              height="20px"
+              width="20px"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 58 58"
+              xmlSpace="preserve"
+              fill="#000000"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <path
+                    style={{
+                      fill: "#2CB742",
+                    }}
+                    d="M0,58l4.988-14.963C2.457,38.78,1,33.812,1,28.5C1,12.76,13.76,0,29.5,0S58,12.76,58,28.5 S45.24,57,29.5,57c-4.789,0-9.299-1.187-13.26-3.273L0,58z"
+                  />
+                  <path
+                    style={{
+                      fill: "#FFFFFF",
+                    }}
+                    d="M47.683,37.985c-1.316-2.487-6.169-5.331-6.169-5.331c-1.098-0.626-2.423-0.696-3.049,0.42 c0,0-1.577,1.891-1.978,2.163c-1.832,1.241-3.529,1.193-5.242-0.52l-3.981-3.981l-3.981-3.981c-1.713-1.713-1.761-3.41-0.52-5.242 c0.272-0.401,2.163-1.978,2.163-1.978c1.116-0.627,1.046-1.951,0.42-3.049c0,0-2.844-4.853-5.331-6.169 c-1.058-0.56-2.357-0.364-3.203,0.482l-1.758,1.758c-5.577,5.577-2.831,11.873,2.746,17.45l5.097,5.097l5.097,5.097 c5.577,5.577,11.873,8.323,17.45,2.746l1.758-1.758C48.048,40.341,48.243,39.042,47.683,37.985z"
+                  />
+                </g>
+              </g>
+            </svg>
+            Whatsapp Now
+            <svg
+              height="20px"
+              width="20px"
+              id="Capa_1"
+              xmlns="http://www.w3.org/2000/svg"
+              xmlnsXlink="http://www.w3.org/1999/xlink"
+              viewBox="0 0 58 58"
+              xmlSpace="preserve"
+              fill="#000000"
+            >
+              <g id="SVGRepo_bgCarrier" strokeWidth={0} />
+              <g
+                id="SVGRepo_tracerCarrier"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <g id="SVGRepo_iconCarrier">
+                <g>
+                  <path
+                    style={{
+                      fill: "#2CB742",
+                    }}
+                    d="M0,58l4.988-14.963C2.457,38.78,1,33.812,1,28.5C1,12.76,13.76,0,29.5,0S58,12.76,58,28.5 S45.24,57,29.5,57c-4.789,0-9.299-1.187-13.26-3.273L0,58z"
+                  />
+                  <path
+                    style={{
+                      fill: "#FFFFFF",
+                    }}
+                    d="M47.683,37.985c-1.316-2.487-6.169-5.331-6.169-5.331c-1.098-0.626-2.423-0.696-3.049,0.42 c0,0-1.577,1.891-1.978,2.163c-1.832,1.241-3.529,1.193-5.242-0.52l-3.981-3.981l-3.981-3.981c-1.713-1.713-1.761-3.41-0.52-5.242 c0.272-0.401,2.163-1.978,2.163-1.978c1.116-0.627,1.046-1.951,0.42-3.049c0,0-2.844-4.853-5.331-6.169 c-1.058-0.56-2.357-0.364-3.203,0.482l-1.758,1.758c-5.577,5.577-2.831,11.873,2.746,17.45l5.097,5.097l5.097,5.097 c5.577,5.577,11.873,8.323,17.45,2.746l1.758-1.758C48.048,40.341,48.243,39.042,47.683,37.985z"
+                  />
+                </g>
+              </g>
+            </svg>
           </a>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
+      </div>
+
+      {/* Main Banner */}
+      <div className="w-full max-w-6xl md:max-w-4xl px-4 flex flex-col items-center justify-center mb-8">
+        <div className="relative w-full h-full">
           <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
+            src={process.env.NEXT_PUBLIC_POSTER_URL || ""}
+            alt="Promotional Banner"
+            className="object-contain h-full w-full"
+            width={800}
+            height={800}
+            quality={100}
+            priority
           />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+        </div>
+      </div>
+
+      {/* Footer */}
+      <footer className="w-full mt-auto py-6 px-4 border-t border-gray-800">
+        <div className="max-w-5xl mx-auto text-center text-sm text-gray-400">
+          <p className="mb-2">
+            18+ | Gamble Responsibly. This game involves financial risk and may
+            be addictive.
+          </p>
+          <p className="mb-2">
+            Please gamble responsibly and only with money you can afford to
+            lose.
+          </p>
+          <p className="mb-4">
+            If you or someone you know has a gambling problem, please seek help.
+          </p>
+
+          <p className="mt-6 text-[#f0c14b]">
+            © {new Date().getFullYear()} AmiriExchange.com. All rights reserved.
+          </p>
+        </div>
       </footer>
-    </div>
+    </main>
   );
 }
